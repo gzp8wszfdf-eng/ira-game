@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Для Иры ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(145deg,#210d35,#70294f);color:white;font-family:Arial;text-align:center;display:grid;place-items:center;padding:20px}
+.card{max-width:430px;width:100%;padding:30px 20px;border-radius:25px;background:#ffffff16;border:1px solid #ffffff35}
+h1{color:#ffd4e8}
+p{line-height:1.7}
+button{display:block;width:100%;padding:16px;margin:12px 0;border:0;border-radius:15px;background:#ff72ad;color:white;font-size:17px;font-weight:bold}
+.heart{font-size:70px;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.2)}}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="card">
+<section id="start">
+<div class="heart">💗</div>
+<h1>Ира: Путь к сердцу</h1>
+<p>Моя принцесса, впереди тебя ждёт маленькое приключение. Готова?</p>
+<button onclick="show('game')">Начать ✨</button>
+</section>
+<section id="game" class="hidden">
+<h1>Собери пять звёзд ⭐</h1>
+<p id="count">Звёзды: 0 из 5</p>
+<div class="heart">⭐</div>
+<button onclick="collect()">Поймать звезду</button>
+</section>
+<section id="question" class="hidden">
+<h1>Загадка 💕</h1>
+<p>Что становится сильнее, когда им делятся?</p>
+<button onclick="answer(true)">Любовь ❤️</button>
+<button onclick="answer(false)">Обида</button>
+<p id="hint"></p>
+</section>
+<section id="final" class="hidden">
+<div class="heart">💋</div>
+<h1>Ты прошла!</h1>
+<p>Ну что, моя маленькая принцесса, поймала мой поцелуй? 🥹</p>
+<p>Ты моё самое любимое приключение. Я хочу проходить каждый день рядом с тобой.</p>
+<h2>Я люблю тебя, Ира! ❤️‍🔥</h2>
+<h3>Твой Лёшка ❤️‍🔥</h3>
+<button onclick="location.reload()">Ещё раз 💞</button>
+</section>
+</div>
+<script>
+let stars=0;
+function show(id){
+document.querySelectorAll('.card section').forEach(s=>s.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+}
+function collect(){
+stars++;
+document.getElementById('count').textContent='Звёзды: '+stars+' из 5';
+if(stars>=5)setTimeout(()=>show('question'),400);
+}
+function answer(ok){
+if(ok)show('final');
+else document.getElementById('hint').textContent='Попробуй ещё раз, любимая ❤️';
+}
+</script>
+</body>
+</html>
